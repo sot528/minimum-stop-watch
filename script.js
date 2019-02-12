@@ -28,3 +28,23 @@ function formatTime(time) {
         hundredths = pad(time - (sec * 100) - (min * 6000), 2);
     return (min > 0 ? pad(min, 2) : "00") + ":" + pad(sec, 2) + ":" + hundredths;
 }
+
+// Keyboard Shortcuts
+$(document).keypress(function(event){
+  switch (event.which) {
+    case 112: // P
+    case 32: // Space
+    case 13: // Enter
+      // Play
+      Main.Timer.toggle();
+      break;
+    case 114: // R
+    case 27: // Esc
+      // Reset
+      Main.resetStopwatch();
+      break;
+    default:
+      console.log(event.keyCode);
+      break;
+  }
+});
