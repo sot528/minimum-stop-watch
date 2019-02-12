@@ -1,9 +1,21 @@
+var titleIncrementer = 0;
+
 var Main = new (function() {
     var $stopwatch,
         incrementTime = 70,
         currentTime = 0,
         updateTimer = function() {
-            $stopwatch.html(formatTime(currentTime));
+            var currentFormatTime = formatTime(currentTime);
+            $stopwatch.html(currentFormatTime);
+
+            ++titleIncrementer;
+
+            if (titleIncrementer >= 30) {
+                // title
+                $('title').html(currentFormatTime);
+                titleIncrementer = 0;
+            }
+
             currentTime += incrementTime / 10;
         },
         init = function() {
